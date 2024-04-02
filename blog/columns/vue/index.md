@@ -1,0 +1,6 @@
+---
+layout: column
+
+---
+
+component

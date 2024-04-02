@@ -1,0 +1,29 @@
+{
+  "name": "personal-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "keywords": [],
+  "author": "sgk",
+  "license": "ISC",
+  "dependencies": {
+    "jsdom": "^24.0.0",
+    "mitt": "^3.0.1",
+    "vitepress": "1.0.0-rc.45"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^21.1.6",
+    "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "autoprefixer": "^10.4.18",
+    "postcss": "^8.4.35",
+    "sass": "^1.71.1",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.4.3",
+    "vue": "^3.4.21"
+  }
+}
