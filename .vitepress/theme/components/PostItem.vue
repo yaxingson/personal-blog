@@ -66,7 +66,7 @@ const link = computed(()=>{
   padding: 12px;
   margin: 12px 5px;
   cursor: pointer;
-  box-shadow: 1px 1px 3px 3px #eee;
+  box-shadow: 1px 1px 2px 2px #eee;
   width: 100%;
 
   > div:first-child {

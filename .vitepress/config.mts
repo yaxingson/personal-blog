@@ -8,14 +8,14 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
-  title: "Samuel's Blog",
+  title: "Samuel の blog",
   description: "A VitePress Site",
   themeConfig: {
-    logo:'',
     nav: [
       { text: 'Blog', link:'/blog/posts/'},
       { text:'Projects', link:'/projects/'},
-      { text:'Demos', link:'/demos/'}
+      { text:'Demos', link:'/demos/'},
+      { text:'Resource', link:"/resource/"}
     ],
     socialLinks: [
       { icon: 'github', link: '' },

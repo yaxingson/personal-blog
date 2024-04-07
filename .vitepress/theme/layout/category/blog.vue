@@ -31,66 +31,45 @@ const list = ()=>{
 
 const grid = ()=>eventBus.emit('fmt', 'grid')
 
+
 </script>
 
 <template>
-  <header>
-    <nav class="py-5 px-5 flex justify-end">
+  <header class="fixed top-0 left-0 right-0 z-10 header">
+    <nav class="py-5 px-5 flex justify-between items-center">
+      <div class="flex">
+        <i data-icon="search" @click="openSearchPanel"></i>
+      </div>
+      <div>
+        <ul class="flex justify-between header__navbar">
+          <li><a href="/blog/posts/">Posts</a></li>
+          <li><a href="/blog/notes/">Notes</a></li>
+          <li><a href="/blog/columns/">Columns</a></li>
+          <li><a href="/blog/streams/">Streams</a></li>
+          <li><a href="/blog/notice/">Notice</a></li>
+        </ul>
+      </div>
       <div>
         <i data-icon="search" @click="openSearchPanel"></i>
-        <i data-icon="list" title="列表展示" @click="list"></i>
-        <i data-icon="grid" title="网格展示" @click="grid"></i>
         <i data-icon="expand" @click="openNavbarPanel"></i>
       </div>
     </nav>
   </header>
-  <main>
-    <div class="max-w-4xl m-auto">
-      <ul class="min-h-24 text-3xl text-gray-400 flex justify-between items-center">
-        <li class="hover:text-gray-800"><a href="/blog/posts/">Posts</a></li>
-        <li class="hover:text-gray-800"><a href="/blog/notes/">Notes</a></li>
-        <li class="hover:text-gray-800"><a href="/blog/columns/">Columns</a></li>
-        <li class="hover:text-gray-800"><a href="/blog/streams/">Streams</a></li>
-        <li class="hover:text-gray-800"><a href="/blog/notice/">Notice</a></li>
-      </ul>
-      <div class="tag-ground">
-        <span class="tag">全部</span>
-        <span class="tag">HTML</span>
-        <span class="tag">CSS</span>
-        <span class="tag">JavaScript</span>
-        <span class="tag">Vue</span>
-        <span class="tag">Nodejs</span>
-        <span class="tag">Window</span>
-        <span class="tag">Git</span>
-        <span class="tag">Linux</span>
-        <span class="tag">Mysql</span>
-        <span class="tag">Typescript</span>
-        <span class="tag">随笔</span>
-        <span class="tag">感想和经验分享</span>
-      </div>
-      <div class="pt-12 relative content-container">
-        <div>
-          <span>2</span>
-          <span>0</span>
-          <span>2</span>
-          <span>4</span>
-        </div>
-        <Content />
-      </div>
-    </div>
+  <main class="slide">
+    <Content />
   </main>
   <div class="fixed top-0 right-0 bottom-0 left-0 mask-layer" v-show="showSearchPanel" @click.self="closeSearchPanel">
     <div class="absolute">
       <input type="search" placeholder="搜索站内您感兴趣的内容" v-model="keyword">
     </div>
   </div>
-  <div class="fixed top-0 right-0 bottom-0 left-0 overlay" v-show="showNavbarPanel">
+  <div class="fixed top-0 right-0 bottom-0 left-0 overlay z-10" v-show="showNavbarPanel">
     <div class="relative">
       <div class="close-btn-wrapper"><i data-icon="close" @click="closeNavbarPanel"></i></div>
       <div>
         <ul class="navbar flex flex-col justify-between">
           <li><a href="/">Home</a></li>
-          <li><a href="/blog/posts/">Blog</a></li>
+          <li><a href="/blog/posts">Blog</a></li>
           <li><a href="/projects/">Projects</a></li>
           <li><a href="/demos/">Demos</a></li>
           <li><a href="/resource/">Resource</a></li>
@@ -103,25 +82,38 @@ const grid = ()=>eventBus.emit('fmt', 'grid')
       </div>
     </div>
   </div>
-  <div class="control">
-    
-  </div>
 </template>
 
 <style scoped lang="scss">
-.content-container {
-  > div:nth-child(1) {
-    position: absolute;
-    font-size: 80px;
-    left: -100px;
-    top: 48px;
-    display: flex;
-    flex-direction: column;
-    font-weight: bold;
-    color: transparent;
-    -webkit-text-stroke: 2px #e2e2e2;
-  }
+.header {
+  z-index:1;
+ 
+ 
 
+}
+
+.header__navbar {
+  li {
+    position: relative;
+    width: 120px;
+    text-align: center;
+    text-transform: uppercase;
+    
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -15px;
+      height: 3px;
+      width: 100%;
+      background: #343434;
+      visibility: hidden;
+    }
+
+    &:hover {
+      &::after {visibility: visible;}
+    }
+  }
 }
 
 .tag-ground {
@@ -161,18 +153,6 @@ const grid = ()=>eventBus.emit('fmt', 'grid')
   margin: 8px;
   margin-left: 0;
   cursor: pointer;
-}
-
-.control {
-  position: fixed;
-  left:0;
-  top:0;
-  width: 0px;
-  height: 0px;
-  border: 150px solid transparent;
-  border-top-color: #cecece;
-  border-left-color: #cecece;
-  z-index: -1;
 }
 
 nav i {
