@@ -65,8 +65,8 @@ function randomColor() {
       </div>
     </div>
     <div class="slide__container">
-      <!-- <Photo /> -->
-      <Tags />
+      <Photo />
+      <!-- <Tags /> -->
       <!-- <template v-if="category === 'post'">
         <PostItem v-for="post in props.posts" v-bind="post" :format="format"/>
       </template>
