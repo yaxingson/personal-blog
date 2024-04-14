@@ -52,7 +52,7 @@ import Menu from '../../components/Menu.vue'
   left: 0;
   right: 0;
   bottom: 0;
-  background: #ebebeb url(/assets/image/stripes.png);
+  background:#f9fafb;
   z-index:-1;
 }
 

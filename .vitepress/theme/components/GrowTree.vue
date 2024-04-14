@@ -4,10 +4,7 @@ import { useEffectCanvas } from '../composable'
 
 const el = ref<HTMLCanvasElement|null>(null)
 
-onMounted(()=>{
-  useEffectCanvas(el.value!)
-  
-})
+onMounted(()=>useEffectCanvas(el.value!))
 
 </script>
 

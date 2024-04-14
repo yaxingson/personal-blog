@@ -1,7 +1,3 @@
-*, *::before, *::after {
-  user-select: none;
-}
-
 :root {
   --vp-c-text-1: #707070;
 

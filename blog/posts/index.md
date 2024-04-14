@@ -7,6 +7,4 @@ import { data } from './posts.data'
 
 </script>
 
-<div class="slide__container">
-  <Outline v-for="item in data" v-bind="item" category="post"/>
-</div>
+<Outline v-for="item in [data[0]]" v-bind="item" category="post"/>

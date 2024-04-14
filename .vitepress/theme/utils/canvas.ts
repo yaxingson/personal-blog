@@ -1,10 +1,9 @@
-// @ts-nocheck
 export class Vector {
   constructor(public x:number, public y:number) {}
 
-  add(v:Vector) {
-    this.x += v.x
-    this.y += v.y
+  add(other:Vector) {
+    this.x += other.x
+    this.y += other.y
     return this
   }
 
@@ -12,276 +11,184 @@ export class Vector {
     return Math.hypot(this.x, this.y)
   }
 
-  rotate(theta) {
+  rotate(theta:number) {
     this.x = Math.cos(theta) * this.x - Math.sin(theta) * this.y
     this.y = Math.sin(theta) * this.x + Math.cos(theta) * this.y
     return this
   }
 
-  mult(f) {
+  mult(f:number) {
     this.x *= f
     this.y *= f
     return this
   }
 }
 
-var Leaf = function (p, r, c, ctx) {
-
-  this.p = p || null;
-
-  this.r = r || 0;
-
-  this.c = c || 'rgba(255,255,255,1.0)';
-
-  this.ctx = ctx;
+export class Leaf {
+  p:Vector|null
+  r:number
+  c:string
+  ctx:CanvasRenderingContext2D
+  
+  constructor(p:Vector, r:number, c:string, ctx) {
+    this.p = p || null
+    this.r = r || 0
+    this.c = c || 'rgba(255,255,255,1.0)'
+    this.ctx = ctx
+  }
 }
 
-Leaf.prototype = {
+export class Branch {
+  static circle = 2 * Math.PI
 
-  render: function () {
-
-    var that = this;
-
-    var ctx = this.ctx;
-
-    // var f = Branch.random(1, 2)
-
-    for (var i = 0; i < 5; i++) {
-
-      (function (r) {
-
-        setTimeout(function () {
-
-          ctx.beginPath();
-
-          ctx.fillStyle = that.color;
-
-          ctx.moveTo(that.p.x, that.p.y);
-
-          ctx.arc(that.p.x, that.p.y, r, 0, Branch.circle, true);
-
-          ctx.fill();
-
-        }, r * 60);
-
-      })(i);
-
-    }
-
+  static random = function (min, max) {
+    return Math.random() * (max - min) + min;
   }
 
-}
+  static clone = function (b) {
 
-export const Branch = function (p, v, r, c, t) {
+    var r = new Branch(new Vector(b.p.x, b.p.y), new Vector(b.v.x, b.v.y), b.r, b.color, b.tree);
+  
+    r.generation = b.generation + 1;
+  
+    return r;
+  
+  }
 
-  this.p = p || null;
+  static rgba = function (r, g, b, a) {
+    return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')'
+  }
 
-  this.v = v || null;
+  static randomrgba = function (min, max, a) {
+    return Branch.rgba(Math.round(Branch.random(min, max)), Math.round(Branch.random(min, max)), Math.round(Branch.random(min, max)), a);
+  }
 
-  this.r = r || 0;
+  p:Vector|null
+  v:Vector|null
+  r:number
+  tree:Tree|null
+  color:string
 
-  this.length = 0;
+  length = 0
+  generation = 1
 
-  this.generation = 1;
+  constructor(p:Vector, v:Vector, r:number, c:string, t:Tree) {
+    this.p = p || null
+    this.v = v || null
+    this.r = r || 0
+    this.tree = t || null
+    this.color = c || 'rgba(255,255,255,1.0)'
 
-  this.tree = t || null;
+    this.register()
+  }
 
-  this.color = c || 'rgba(255,255,255,1.0)';
+  register() {
+    this.tree!.addBranch(this)
+  }
 
-  this.register();
+  draw() {
+    const { ctx } = this.tree!
+    const { p, r } = this
 
-};
+    if(p === null) return 
 
-Branch.prototype = {
+    ctx.beginPath()
 
-  register: function () {
+    ctx.fillStyle = this.color
 
-    this.tree.addBranch(this);
+    ctx.moveTo(p.x, p.y)
+    ctx.arc(p.x, p.y, r, 0, Branch.circle, true)
 
-  },
+    ctx.fill()
+  }
 
-  draw: function () {
+  modify() {
+    const angle = 0.18 - (0.10 / this.generation)
 
-    var ctx = this.tree.ctx;
+    if(this.p === null || this.v === null) return
 
-    ctx.beginPath();
+    this.p.add(this.v)
+    
+    this.length += this.v.length()
 
-    ctx.fillStyle = this.color;
+    this.r *= 0.99
 
-    ctx.moveTo(this.p.x, this.p.y);
+    this.v.rotate(Branch.random(-angle, angle))
 
-    ctx.arc(this.p.x, this.p.y, this.r, 0, Branch.circle, true);
-
-    ctx.fill();
-
-  },
-
-  modify: function () {
-
-    var angle = 0.18 - (0.10 / this.generation);
-
-    this.p.add(this.v);
-
-    this.length += this.v.length();
-
-    this.r *= 0.99;
-
-    this.v.rotate(Branch.random(-angle, angle)); //.mult(0.996);
-
-    if (this.r < 0.8 || this.generation > 10) {
-
-      this.tree.removeBranch(this);
-
-      var l = new Leaf(this.p, 10, this.color, this.tree.ctx);
-
-      l.render();
-
+    if(this.r < 0.8 || this.generation > 10) {
+      this.tree!.removeBranch(this)
+      // new Leaf(this.p, 10, this.color, this.tree!.ctx)
     }
+  }
 
-  },
+  grow() {
+    this.draw()
+    this.modify()
+    this.fork()
+  }
 
-  grow: function () {
-
-    this.draw();
-
-    this.modify();
-
-    this.fork();
-
-  },
-
-  fork: function () {
-
-    var p = this.length - Branch.random(100, 200); // + (this.generation * 10);
-
+  fork() {
+    const p = this.length - Branch.random(100, 200); // + (this.generation * 10);
+    
     if (p > 0) {
+      const n = Math.round(Branch.random(1, 3))
 
-      var n = Math.round(Branch.random(1, 3));
+      this.tree!.stat.fork += n - 1
 
-      this.tree.stat.fork += n - 1;
-
-      for (var i = 0; i < n; i++) {
-
-        Branch.clone(this);
-
+      for (let i = 0; i < n; i++) {
+        Branch.clone(this)
       }
 
-      this.tree.removeBranch(this);
-
+      this.tree!.removeBranch(this)
     }
+  }
+}
 
+export class Tree {
+  timer:any
+  branches:Branch[] = []
+  ctx: CanvasRenderingContext2D
+
+  stat = {
+    fork: 0,
+    length: 0
   }
 
-};
+  addBranch(b:Branch) {
+    this.branches.push(b)
+  }
 
-Branch.circle = 2 * Math.PI;
-
-Branch.random = function (min, max) {
-  return Math.random() * (max - min) + min;
-};
-
-Branch.clone = function (b) {
-
-  var r = new Branch(new Vector(b.p.x, b.p.y), new Vector(b.v.x, b.v.y), b.r, b.color, b.tree);
-
-  r.generation = b.generation + 1;
-
-  return r;
-
-};
-
-Branch.rgba = function (r, g, b, a) {
-
-  return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
-
-};
-
-Branch.randomrgba = function (min, max, a) {
-  return Branch.rgba(Math.round(Branch.random(min, max)), Math.round(Branch.random(min, max)), Math.round(Branch.random(min, max)), a);
-};
-
-export const Tree = function () {
-
-  var branches = [];
-
-  var timer;
-
-  this.stat = {
-
-    fork: 0,
-
-    length: 0
-
-  };
-
-  this.addBranch = function (b) {
-
-    branches.push(b);
-
-  };
-
-  this.removeBranch = function (b) {
-
-    for (var i = 0; i < branches.length; i++) {
-
-      if (branches[i] === b) {
-
-        branches.splice(i, 1);
-
+  removeBranch(b:Branch) {
+    for (let i = 0; i < this.branches.length; i++) {
+      if (this.branches[i] === b) {
+        this.branches.splice(i, 1);
         return;
-
       }
-
     }
+  }
 
-  };
-
-  this.render = function (fn) {
-
-    var that = this;
-
-    timer = setInterval(function () {
-
-      fn.apply(that, arguments);
-
-      if (branches.length > 0) {
-
-        for (var i = 0; i < branches.length; i++) {
-
-          branches[i].grow();
-
+  render() {
+    this.timer = setInterval(()=>{
+      if(this.branches.length > 0) {
+        for (var i = 0; i < this.branches.length; i++) {
+          this.branches[i].grow()
         }
-
+      } else {
+        clearInterval(this.timer)
       }
+    }, 1000/30)
+  }
 
-      else {
+  init(ctx:CanvasRenderingContext2D) {
+    this.ctx = ctx
+  }
 
-        //clearInterval(timer);
-
-      }
-
-    }, 1000 / 30);
-
-  };
-
-  this.init = function (ctx) {
-
-    this.ctx = ctx;
-
-  };
-
-  this.abort = function () {
-
-    branches = [];
+  abort() {
+    this.branches = []
 
     this.stat = {
-
       fork: 0,
-
       length: 0
-
     }
-
-  };
-
+  }
 }

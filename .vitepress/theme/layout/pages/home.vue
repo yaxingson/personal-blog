@@ -2,26 +2,19 @@
 import { watch } from 'vue'
 import { useData } from 'vitepress'
 import Navbar from '../../components/Navbar.vue'
-import EffectCanvas from '../../components/EffectCanvas.vue'
-
-const { page, theme, frontmatter } = useData()
-
-watch(frontmatter, val=>{
-  console.log(val)
-
-})
+import GrowTree from '../../components/GrowTree.vue'
 
 </script>
 
 <template>
-  <Navbar></Navbar>  
+  <Navbar></Navbar>
   <main class="pt-10">
     <div class="fixed top-0 bottom-0 left-0 right-0 -z-10">
-      
+      <GrowTree />
     </div>
     <div class="home__container">
       <div class="home__intro__first">
-        <p>👋, I am a front-end developer and a fanatical open sourceror living in Hebei, China.</p>
+        <p>Hey, welcome to my blog. I am a front-end developer and a fanatical open sourceror.</p>
       </div>
       <div>
         <span class="social-link"><Icon name="github" /> GitHub</span>
@@ -31,6 +24,7 @@ watch(frontmatter, val=>{
         <span class="social-link"><Icon name="juejin" /> 稀土掘金</span>
       </div>
       <div class="home__intro__second">
+        <div></div>
         <p>
           My expertise includes html, css, js and vue. Eager to make progress together with like-minded partners.
           Outside of programming, I like to read books and watch movies. Of course, I also listen to music.
@@ -47,37 +41,20 @@ watch(frontmatter, val=>{
   max-width: 1024px;
   margin: auto;
   height: 300px;
-
-  &::after {
-    content:"";
-    position:absolute;
-    width: 100px;
-    height:100px;
-    background: #eee;
-    border-radius: 50%;
-    box-shadow: 82px 55px 0 0 #eee, 
-      -79px 59px 0 0 #eee, 
-      79px 151px 0 0 #eee, 
-      -86px 155px 0 0 #eee, 
-      -2px 204px 0 0 #eee,
-      -31px -95px 0 0 #eee, 
-      -152px -4px 0 0 #eee, 
-      -129px -99px 0 0 #eee;
-  }
 }
 
 .home__intro__first {
-  font-size: 30px;
+  font-size: 35px;
   width: 70%;
   text-align: justify;
   margin-bottom: 30px;
 }
 
 .home__intro__second {
-  font-size: 18px;
+  font-size: 22px;
   margin-top: 50px;
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   text-align: justify; 
   
   > p { width: 60%;}

@@ -42,9 +42,6 @@ const { outline } = data.find(item=>{
       </aside>
     </div>
   </main>
-  <footer class="h-20 text-white bg-neutral-700 grid place-content-center">
-    <div>Build by vitepress CC BY-NC-SA 4.0 2021-PRESENT © Samuel</div>
-  </footer>
 </template>
 
 <style scoped lang="scss">

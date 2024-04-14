@@ -12,31 +12,30 @@ export function useEffectCanvas(el:HTMLCanvasElement|Ref<HTMLCanvasElement>) {
 
   var canvas_width = window.screen.width
   var canvas_height = window.screen.height - 30
-  var center_x = canvas_width / 2
+  var center_x = canvas_width / 3
   var stretch_factor = 500 / canvas_height
   var y_speed = 3 / stretch_factor
   
   canvas.width = canvas_width
   canvas.height = canvas_height
-  // canvas.style.filter = 'grayscale(1)'
 
   var ctx = canvas.getContext("2d")!
 
   ctx.globalCompositeOperation = "lighter"
-  // ctx.filter = 'blur(4px)'
 
-  const  t = new Tree()
+  const tree = new Tree()
 
-  t.init(ctx)
+  tree.init(ctx)
 
-  for (let i = 0; i < 3; i++) {
-    new Branch(new Vector(center_x, canvas_height), 
-    new Vector(Branch.random(-1, 1), -y_speed), 15 / stretch_factor, Branch.randomrgba(0, 255, 0.3), t);
-  }
+  new Branch(
+    new Vector(center_x, canvas_height), 
+    new Vector(Branch.random(-1, 1), -y_speed), 
+    15/stretch_factor, 
+    `rgba(180, 180, 180, 0.5)`,
+    tree
+  )
 
-  t.render(function () {
-    
-  })
+  tree.render()
 
 }
 

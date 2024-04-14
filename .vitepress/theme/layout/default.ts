@@ -1,15 +1,15 @@
 import { defineComponent, h } from 'vue'
 import { useData } from 'vitepress'
-import HomeLayout from './category/home.vue'
-import BlogLayout from './category/blog.vue'
-import ProjectLayout from './category/project.vue'
-import DemoLayout from './category/demo.vue'
+import HomeLayout from './pages/home.vue'
+import BlogLayout from './pages/blog.vue'
+import ProjectLayout from './pages/project.vue'
+import DemoLayout from './pages/demo.vue'
 import PostsLayout from './blog/post.vue'
 import NoteLayout from './blog/note.vue'
 import ColumnLayout from './blog/column.vue'
 import StreamLayout from './blog/stream.vue'
 import NoticeLayout from './blog/notice.vue'
-import ResourceLayout from './category/resource.vue'
+import ResourceLayout from './pages/resource.vue'
 
 const columns = {
   home:HomeLayout,

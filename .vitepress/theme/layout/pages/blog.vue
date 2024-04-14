@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import Navbar from '../../components/Navbar.vue'
+import Pager from '../../components/Pager.vue'
 import { eventBus } from '../../utils'
 
 const showSearchPanel = ref(false)
@@ -35,29 +36,64 @@ const grid = ()=>eventBus.emit('fmt', 'grid')
 </script>
 
 <template>
-  <header class="fixed top-0 left-0 right-0 z-10 header">
-    <nav class="py-5 px-5 flex justify-between items-center">
-      <div class="flex">
-        <i data-icon="search" @click="openSearchPanel"></i>
+  <div class="flex justify-between container">
+    <aside class="aside">
+      <div>
+        <div class="aside__avatar">
+          <div class="flex justify-center"><img src="/assets/image/avatar.jpg" alt=""></div>
+          <h2>Samuel</h2>
+      
+        </div>
+        <nav class="flex justify-between aside__subnav">
+          <a href="">分类</a>
+          <a href="">标签</a>
+          <a href="">归档</a>
+          <a href="">相册</a>
+          <a href="">更多</a>
+        </nav>
+      </div>
+      <div class="">
+        <div>个人说说</div>
+        <div>
+
+        </div>
       </div>
       <div>
-        <ul class="flex justify-between header__navbar">
-          <li><a href="/blog/posts/">Posts</a></li>
-          <li><a href="/blog/notes/">Notes</a></li>
-          <li><a href="/blog/columns/">Columns</a></li>
-          <li><a href="/blog/streams/">Streams</a></li>
-          <li><a href="/blog/notice/">Notice</a></li>
-        </ul>
+        <div>每日动态</div>
+        <div>
+
+        </div>
       </div>
-      <div>
-        <i data-icon="search" @click="openSearchPanel"></i>
-        <i data-icon="expand" @click="openNavbarPanel"></i>
-      </div>
-    </nav>
-  </header>
-  <main class="slide">
-    <Content />
-  </main>
+    </aside>
+    <div>
+      <header class="header">
+        <nav class="flex justify-between">
+          <div class="">
+            <i data-icon="calendar"></i>
+          </div>
+          <div>
+            <ul class="flex justify-between header__navbar">
+              <li><a href="/blog/posts/">Posts</a></li>
+              <li><a href="/blog/notes/">Notes</a></li>
+              <li><a href="/blog/columns/">Columns</a></li>
+              <li><a href="/blog/streams/">Streams</a></li>
+              <li><a href="/blog/notice/">Notice</a></li>
+            </ul>
+          </div>
+          <div>
+            <i data-icon="search" @click="openSearchPanel"></i>
+            <i data-icon="expand" @click="openNavbarPanel"></i>
+          </div>
+        </nav>
+      </header>
+      <main>
+        <Content />
+      </main>
+      <footer class="footer">
+        
+      </footer>
+    </div>
+  </div>
   <div class="fixed top-0 right-0 bottom-0 left-0 mask-layer" v-show="showSearchPanel" @click.self="closeSearchPanel">
     <div class="absolute">
       <input type="search" placeholder="搜索站内您感兴趣的内容" v-model="keyword">
@@ -85,36 +121,91 @@ const grid = ()=>eventBus.emit('fmt', 'grid')
 </template>
 
 <style scoped lang="scss">
-.header {
-  z-index:1;
- 
- 
+.footer {
+  min-height: 300px;
+  border-top: 1px solid #dbdbdb;
 
+}
+
+.container {
+  padding: 30px 50px;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.aside {
+  width:380px;
+  margin-right: 50px;
+
+  > div {
+    padding: 8px 12px;
+    box-shadow: 1px 1px 2px 2px #eee;
+    margin-bottom: 25px;
+    
+    &:not(:first-child) {
+      min-height: 500px;
+    }
+  }
+
+  &+div {
+    flex: 1;
+  }
+}
+
+.aside__avatar {
+  text-align: center;
+
+  img {
+    width: 150px;
+    border-radius: 50%;
+  }
+
+  h2 {
+    font-size: 20px;
+    margin: 30px 0;
+  }
+}
+
+.aside__subnav {
+  margin-bottom: 30px;
+
+  a {
+    display: inline-block;
+    padding: 2px 15px;
+    background: #4c4c4c;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 3px;
+  }
+}
+
+.header {
+  margin-bottom: 50px;
 }
 
 .header__navbar {
   li {
     position: relative;
-    width: 120px;
-    text-align: center;
+    padding: 0 25px;
     text-transform: uppercase;
-    
+
     &::after {
       content: "";
       position: absolute;
-      left: 0;
-      bottom: -15px;
-      height: 3px;
+      left:0;
+      bottom: -10px;
       width: 100%;
-      background: #343434;
+      height: 3px;
+      background: #b8b8b8;
       visibility: hidden;
     }
 
     &:hover {
-      &::after {visibility: visible;}
+      &::after { visibility: visible;}
     }
   }
 }
+
 
 .tag-ground {
   overflow-x: scroll;
@@ -131,6 +222,19 @@ const grid = ()=>eventBus.emit('fmt', 'grid')
   &::-webkit-scrollbar-thumb {
     background-color: rgb(196, 196, 196);
   } 
+}
+
+i[data-icon] {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-size: cover;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+[data-icon=calendar] {
+  background-image: url(/assets/icon/left-arrow.svg);
 }
 
 [data-icon=more] {
