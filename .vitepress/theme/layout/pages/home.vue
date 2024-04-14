@@ -1,8 +1,13 @@
 <script setup lang="ts">
-import { watch } from 'vue'
+import { watch, onMounted } from 'vue'
 import { useData } from 'vitepress'
 import Navbar from '../../components/Navbar.vue'
 import GrowTree from '../../components/GrowTree.vue'
+
+onMounted(()=>{
+  console.log(document.documentElement.style.getPropertyValue('--dark-color'))
+})
+
 
 </script>
 
@@ -18,7 +23,7 @@ import GrowTree from '../../components/GrowTree.vue'
       </div>
       <div>
         <span class="social-link"><Icon name="github" /> GitHub</span>
-        <span class="social-link"><Icon name="twitter" size="23" /> Twitter</span>
+        <span class="social-link"><Icon name="twitter" :size="23" /> Twitter</span>
         <span class="social-link"><Icon name="youtube" /> Youtube </span>
         <span class="social-link"><Icon name="bilibili" /> 哔哩哔哩</span>
         <span class="social-link"><Icon name="juejin" /> 稀土掘金</span>

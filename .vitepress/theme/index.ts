@@ -4,6 +4,7 @@ import Layout from './layout/default.ts'
 import Outline from './components/Outline.vue'
 import Icon from './components/Icon.vue'
 
+import './icons'
 import './styles/index.css'
 
 export default {

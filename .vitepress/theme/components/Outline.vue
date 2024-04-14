@@ -39,8 +39,7 @@ onMounted(() => {
 
 <template>
   <div class="outline-wrapper">
-    <Archivist />
-    <!-- <div>
+    <div>
       <template v-if="category === 'post'">
         <PostItem v-for="post in props.posts" v-bind="post" :format="format"/>
       </template>
@@ -57,18 +56,36 @@ onMounted(() => {
         <NoticeItem v-for="notice in props.notices" v-bind="notice" :format="format"/>
       </template>
     </div>
-    <Pager /> -->
   </div>
 </template>
 
 <style lang="scss" scoped>
 .outline-wrapper {
-  min-height: 700px;
   width: 980px;
   margin: auto;
   padding-bottom: 50px;
-}
 
+  > div {
+    height: 700px;
+    overflow: scroll;
+
+    scrollbar-color: linear-gradient(to bottom, green, pink);
+    scrollbar-width: 30px;
+    
+    &::-webkit-scrollbar {
+      width: 30px;
+      height: 30px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: linear-gradient(to bottom, red, pink);
+    }
+
+    &::-webkit-scrollbar-track {
+      background: linear-gradient(to right, skyblue, tomato);
+    }
+  }
+}
 
 ::v-deep(.post-list-item:first-child) {
   margin-top: 3px;
