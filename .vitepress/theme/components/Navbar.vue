@@ -4,6 +4,11 @@ import { useData } from 'vitepress'
 
 const { theme } = useData()
 
+function changeTheme() {
+  const isLight = window.getComputedStyle(document.body).backgroundColor === 'rgb(255, 255, 255)'
+  document.body.style.backgroundColor = isLight ? '#000':'#fff'
+}
+
 </script>
 
 <template>
@@ -16,7 +21,7 @@ const { theme } = useData()
           :data-icon="socialLink.icon" :href="socialLink.link" :title="socialLink.icon"></a>
         <a data-icon="email" title="email"></a>
         <a data-icon="rss" title="RSS订阅"></a>
-        <a data-icon="light"></a>
+        <a data-icon="light" @click="changeTheme"></a>
       </div>
     </nav>
   </header>

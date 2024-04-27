@@ -12,18 +12,7 @@ const { title, views, poster, publish, duration } = toRefs(props)
 </script>
 
 <template>
-  <div v-show="props.format === 'list'" class="stream-list-item flex ">
-    <div><img :src="poster" alt=""></div>
-    <div class="flex flex-col justify-between">
-      <h2>{{ title }}</h2>
-      <div>
-        <span>创建日期 2020-10-02</span>
-        <span>时长 {{ duration }}</span>
-        <span>播放量 {{ views }}</span>
-      </div>
-    </div>
-  </div>
-  <div v-show="props.format === 'grid'" class="stream-grid-item">
+  <div class="stream-grid-item">
     <div><img :src="poster" alt=""></div>
     <h2>{{ title }}</h2>
     <div>
@@ -35,22 +24,8 @@ const { title, views, poster, publish, duration } = toRefs(props)
 </template>
 
 <style scoped lang="scss">
-.stream-list-item {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 30px;
-  background: #eee;
-
-  img {
-    width: 250px;
-    margin-right: 30px;
-  }
-}
-
 .stream-grid-item {
-  width: 45%;
   position: relative;
-  margin-bottom: 30px;
 
   h2 {
     height: 30px;

@@ -94,7 +94,7 @@ export class Branch {
 
     ctx.beginPath()
 
-    ctx.fillStyle = this.color
+    ctx.fillStyle = `pink`
 
     ctx.moveTo(p.x, p.y)
     ctx.arc(p.x, p.y, r, 0, Branch.circle, true)

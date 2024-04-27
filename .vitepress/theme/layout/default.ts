@@ -8,7 +8,6 @@ import PostsLayout from './blog/post.vue'
 import NoteLayout from './blog/note.vue'
 import ColumnLayout from './blog/column.vue'
 import StreamLayout from './blog/stream.vue'
-import NoticeLayout from './blog/notice.vue'
 import ResourceLayout from './pages/resource.vue'
 
 const columns = {
@@ -20,7 +19,6 @@ const columns = {
   note: NoteLayout,
   column: ColumnLayout,
   stream: StreamLayout,
-  notice: NoticeLayout,
   resource: ResourceLayout,
   
 }

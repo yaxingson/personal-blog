@@ -8,7 +8,7 @@ const props = defineProps<{
 
 <template>
   <svg width="30px" height="30px">
-    <use :xlink:href="`#${props.name}`"></use>
+    <use :xlink:href="`#${props.name}`" width="30px" height="30px"></use>
   </svg>
 </template>
 

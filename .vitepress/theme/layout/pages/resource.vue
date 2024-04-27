@@ -6,7 +6,6 @@ import Menu from '../../components/Menu.vue'
 <template>
   <Menu />
   <main>
-    <div class="main__bg"></div>
     <div class="main__container">
       <section class="main__container__section">
         <h2>工具</h2>
@@ -52,7 +51,6 @@ import Menu from '../../components/Menu.vue'
   left: 0;
   right: 0;
   bottom: 0;
-  background:#f9fafb;
   z-index:-1;
 }
 
@@ -75,7 +73,9 @@ import Menu from '../../components/Menu.vue'
   .resource__container > div {
     min-height: 150px;
     background: #fff;
-    box-shadow: 1px 1px 5px 3px #e9e9e9;
+    border: 1px solid rgb(196 196 196 / 30%);
+    border-radius: 3px;
+    
     cursor: pointer;
   }
 }

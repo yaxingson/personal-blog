@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import Navbar from '../../components/Navbar.vue'
 import Pager from '../../components/Pager.vue'
 import { eventBus } from '../../utils'
 
@@ -44,22 +43,15 @@ const grid = ()=>eventBus.emit('fmt', 'grid')
           <h2>Samuel</h2>
       
         </div>
-        <nav class="flex justify-between aside__subnav">
-          <a href="">分类</a>
-          <a href="">标签</a>
-          <a href="">归档</a>
-          <a href="">相册</a>
-          <a href="">更多</a>
-        </nav>
       </div>
       <div class="">
-        <div>个人说说</div>
+        <div class="flex items-center"><Icon name="category"/><span>分类</span></div>
         <div>
 
         </div>
       </div>
       <div>
-        <div>每日动态</div>
+        <div class="flex items-center"><Icon name="tag"/><span>标签</span></div>
         <div>
 
         </div>
@@ -77,7 +69,7 @@ const grid = ()=>eventBus.emit('fmt', 'grid')
               <li><a href="/blog/notes/">Notes</a></li>
               <li><a href="/blog/columns/">Columns</a></li>
               <li><a href="/blog/streams/">Streams</a></li>
-              <li><a href="/blog/notice/">Notice</a></li>
+              <li><a href="/blog/notice/">Archivist</a></li>
             </ul>
           </div>
           <div>
@@ -139,9 +131,9 @@ const grid = ()=>eventBus.emit('fmt', 'grid')
 
   > div {
     padding: 8px 12px;
-    box-shadow: 1px 1px 2px 2px #eee;
     margin-bottom: 25px;
-    
+    border: 1px solid rgb(196 196 196 / 30%);
+
     &:not(:first-child) {
       min-height: 500px;
     }

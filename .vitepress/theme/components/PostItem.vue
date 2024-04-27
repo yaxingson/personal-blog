@@ -43,20 +43,6 @@ const link = computed(()=>{
     </div>
     <div><img :src="poster" alt=""></div>
   </div>
-  <div class="post-grid-item" v-show="format === 'grid'">
-    <div><img :src="poster" alt=""></div>
-    <div class="flex flex-col justify-between p-1">
-      <div>
-        <h2>{{ title }}</h2>
-        <p>{{ description }}</p>
-      </div>
-      <div class="flex">
-        <div><Icon name="calendar" size="26"/><span>{{ date }}</span></div>
-        <div><Icon name="comment" size="23"/><span>{{ comments }}</span></div>
-        <div><Icon name="clock"/><span>{{ readTime }}</span></div>
-      </div>
-    </div>
-  </div>
 </template>
 
 <style scoped lang="scss">
@@ -64,10 +50,11 @@ const link = computed(()=>{
   display: flex;
   min-height: 180px;
   padding: 12px;
-  margin: 12px 5px;
+  margin: 12px 0;
   cursor: pointer;
-  box-shadow: 1px 1px 2px 2px #eee;
   width: 100%;
+  border:1px solid #d6d6d680;
+  
 
   > div:first-child {
     flex:1;

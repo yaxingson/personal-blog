@@ -4,7 +4,6 @@ import PostItem from './PostItem.vue'
 import NoteItem from './NoteItem.vue'
 import ColumnItem from './ColumnItem.vue'
 import StreamItem from './StreamItem.vue'
-import NoticeItem from './NoticeItem.vue'
 import type { OutlineProps } from '../types'
 import { eventBus } from '../utils'
 import Category from './Category.vue'
@@ -39,7 +38,7 @@ onMounted(() => {
 
 <template>
   <div class="outline-wrapper">
-    <div>
+    <div :class="{grid:category === 'column' || category === 'stream'}" class="grid-cols-1 gap-2">
       <template v-if="category === 'post'">
         <PostItem v-for="post in props.posts" v-bind="post" :format="format"/>
       </template>
@@ -62,29 +61,24 @@ onMounted(() => {
 <style lang="scss" scoped>
 .outline-wrapper {
   width: 980px;
-  margin: auto;
-  padding-bottom: 50px;
+  margin: 0 auto 50px;
+  padding: 0 30px;
+  height: 800px;
+  overflow:auto;
 
-  > div {
-    height: 700px;
-    overflow: scroll;
-
-    scrollbar-color: linear-gradient(to bottom, green, pink);
-    scrollbar-width: 30px;
-    
-    &::-webkit-scrollbar {
-      width: 30px;
-      height: 30px;
+  &::-webkit-scrollbar {
+      width: 8px;
     }
 
     &::-webkit-scrollbar-thumb {
-      background: linear-gradient(to bottom, red, pink);
+      background: #c4c4c4;
+      border-radius: 5px;
     }
 
     &::-webkit-scrollbar-track {
-      background: linear-gradient(to right, skyblue, tomato);
+      display: none;
     }
-  }
+
 }
 
 ::v-deep(.post-list-item:first-child) {

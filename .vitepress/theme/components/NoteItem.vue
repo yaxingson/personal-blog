@@ -13,16 +13,12 @@ const props = withDefaults(defineProps<NoteItemProps>(), {format:'list'})
 </script>
 
 <template>
-  <div v-show="props.format === 'list'" class="note-list-item flex justify-between" @click="router.go('/blog/notes/202403191612')">
+  <div class="note-list-item flex justify-between" @click="router.go('/blog/notes/202403191612')">
     <div class="flex items-center">
       <div class="square"></div>
       <h2>{{ props.title }}</h2>
     </div>
     <div>2020-02-10</div>
-  </div>
-  <div v-show="props.format === 'grid'" class="note-grid-item">
-    <h2>{{ props.title }}</h2>
-    <div>2020-10-21</div>
   </div>
 </template>
 

@@ -1,10 +1,11 @@
 // @ts-nocheck
 
 window.onload = async ()=>{
-  const modules = import.meta.glob('/assets/icon/*.svg')
+  const modules = import.meta.glob('../../../assets/icon/*.svg')
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
   
   svg.style.display = 'none'
+  svg.viewBox = '0 0 30 30'
 
   for(const path in modules) {
     const iconName = path.match(/\/([^\/]+?)\.svg$/)[1]
