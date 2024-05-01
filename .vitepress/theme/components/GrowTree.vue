@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { useEffectCanvas } from '../composable'
+import { useEffectCanvas } from '../composables'
 
 const el = ref<HTMLCanvasElement|null>(null)
 

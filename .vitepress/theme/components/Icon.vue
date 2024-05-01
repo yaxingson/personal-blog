@@ -1,18 +1,23 @@
 <script setup lang="ts">
-const props = defineProps<{
+import { withDefaults } from 'vue'
+
+const props = withDefaults(defineProps<{
   name:string
   size?:number
-}>()
+}>(), { size:25 })
 
 </script>
 
 <template>
-  <svg width="30px" height="30px">
-    <use :xlink:href="`#${props.name}`" width="30px" height="30px"></use>
+  <svg viewBox="0 0 1024 1024" width="25" height="25">
+    <use :xlink:href="`#${props.name}`"/>
   </svg>
 </template>
 
 <style scoped lang="scss">
-
+svg {
+  display: inline-block;
+  vertical-align: -7px;
+}
 
 </style>

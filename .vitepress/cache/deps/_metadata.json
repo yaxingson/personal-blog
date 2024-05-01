@@ -1,49 +1,49 @@
 {
-  "hash": "86f8ee9a",
+  "hash": "05bd9f0c",
   "configHash": "642f46df",
-  "lockfileHash": "2c5de027",
-  "browserHash": "22633346",
+  "lockfileHash": "418ea8b5",
+  "browserHash": "d37756f7",
   "optimized": {
     "vue": {
       "src": "../../../node_modules/.pnpm/vue@3.4.21_typescript@5.4.3/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "d670136c",
+      "fileHash": "4f5880c3",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../node_modules/.pnpm/@vue+devtools-api@7.0.16_vue@3.4.21/node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "2fe7ea57",
+      "fileHash": "4519f71f",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../node_modules/.pnpm/@vueuse+core@10.9.0_vue@3.4.21/node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "6b834f57",
+      "fileHash": "9b2cc529",
       "needsInterop": false
     },
     "vitepress > @vueuse/integrations/useFocusTrap": {
       "src": "../../../node_modules/.pnpm/@vueuse+integrations@10.9.0_focus-trap@7.5.4_vue@3.4.21/node_modules/@vueuse/integrations/useFocusTrap.mjs",
       "file": "vitepress___@vueuse_integrations_useFocusTrap.js",
-      "fileHash": "0950d743",
+      "fileHash": "4760fece",
       "needsInterop": false
     },
     "vitepress > mark.js/src/vanilla.js": {
       "src": "../../../node_modules/.pnpm/mark.js@8.11.1/node_modules/mark.js/src/vanilla.js",
       "file": "vitepress___mark__js_src_vanilla__js.js",
-      "fileHash": "f7702b7a",
+      "fileHash": "8526c8b2",
       "needsInterop": false
     },
     "vitepress > minisearch": {
       "src": "../../../node_modules/.pnpm/minisearch@6.3.0/node_modules/minisearch/dist/es/index.js",
       "file": "vitepress___minisearch.js",
-      "fileHash": "add45b93",
+      "fileHash": "b91d6e23",
       "needsInterop": false
     },
     "mitt": {
       "src": "../../../node_modules/.pnpm/mitt@3.0.1/node_modules/mitt/dist/mitt.mjs",
       "file": "mitt.js",
-      "fileHash": "db888b8e",
+      "fileHash": "18fba627",
       "needsInterop": false
     }
   },

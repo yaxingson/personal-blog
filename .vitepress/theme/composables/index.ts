@@ -10,18 +10,19 @@ import { Tree, Branch, Vector } from '../utils'
 export function useEffectCanvas(el:HTMLCanvasElement|Ref<HTMLCanvasElement>) {
   const canvas = toValue(el)
 
-  var canvas_width = window.screen.width
-  var canvas_height = window.screen.height - 30
-  var center_x = canvas_width / 3
-  var stretch_factor = 500 / canvas_height
-  var y_speed = 3 / stretch_factor
+  const canvas_width = window.screen.width
+  const canvas_height = window.screen.height - 30
+  const center_x = canvas_width / 3
+  const stretch_factor = 500 / canvas_height
+  const y_speed = 3 / stretch_factor
   
   canvas.width = canvas_width
   canvas.height = canvas_height
 
-  var ctx = canvas.getContext("2d")!
+  const ctx = canvas.getContext("2d")!
 
   ctx.globalCompositeOperation = "lighter"
+  ctx.globalCompositeOperation = 'lighter'
 
   const tree = new Tree()
 
@@ -31,7 +32,7 @@ export function useEffectCanvas(el:HTMLCanvasElement|Ref<HTMLCanvasElement>) {
     new Vector(center_x, canvas_height), 
     new Vector(Branch.random(-1, 1), -y_speed), 
     15/stretch_factor, 
-    `rgba(180, 180, 180, 0.5)`,
+    `pink`,
     tree
   )
 

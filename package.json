@@ -11,7 +11,7 @@
     "prepare": "husky",
     "test:unit": "vitest --run --dir .vitepress/theme/__test__",
     "coverage": "vitest --run --config vitest.config.ts",
-    "test":"echo \"start test ...\""
+    "test": "echo \"start test ...\""
   },
   "keywords": [],
   "author": "sgk",
@@ -27,6 +27,7 @@
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@eslint/js": "^9.0.0",
+    "@types/eslint__js": "^8.42.3",
     "@types/jsdom": "^21.1.6",
     "@types/node": "^20.12.7",
     "@vitejs/plugin-vue-jsx": "^3.1.0",

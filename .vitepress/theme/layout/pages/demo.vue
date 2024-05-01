@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { useMouse  } from '../../composable'
+import { computed } from 'vue'
+import { useMouse  } from '../../composables'
 import Menu from '../../components/Menu.vue'
 
 const [ x, y ] = useMouse()

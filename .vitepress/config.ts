@@ -5,12 +5,15 @@ import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
+const root = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
-  title: "Samuel の blog",
-  description: "A VitePress Site",
+  title: "Soetas の blog",
+  lang:'zh-CN',
+  cleanUrls:true,
+  description: "personal blog site",
   themeConfig: {
+    logo:'',
     nav: [
       { text: 'Blog', link:'/blog/posts/'},
       { text:'Projects', link:'/projects/'},
@@ -26,23 +29,19 @@ export default defineConfig({
     }
   },
   vite:{
-    server:{
-      port:8169
-    },
     css:{
       postcss:{
         plugins:[
-          tailwindcss,
-          autoprefixer,
+          tailwindcss() as any,
+          autoprefixer() as any,
         ]
       }
     },
     plugins:[vueJsx()],
     resolve:{
       alias:{
-        '@':resolve(__dirname, 'theme')
+        '@':resolve(root, 'theme')
       }
     }
   }
 })
-

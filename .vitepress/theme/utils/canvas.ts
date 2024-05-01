@@ -93,8 +93,9 @@ export class Branch {
     if(p === null) return 
 
     ctx.beginPath()
+    ctx.globalCompositeOperation = 'lighten'
 
-    ctx.fillStyle = `pink`
+    ctx.fillStyle = 'skyblue'
 
     ctx.moveTo(p.x, p.y)
     ctx.arc(p.x, p.y, r, 0, Branch.circle, true)
@@ -170,7 +171,7 @@ export class Tree {
   render() {
     this.timer = setInterval(()=>{
       if(this.branches.length > 0) {
-        for (var i = 0; i < this.branches.length; i++) {
+        for (let i = 0; i < this.branches.length; i++) {
           this.branches[i].grow()
         }
       } else {

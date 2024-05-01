@@ -14,6 +14,5 @@ export default {
     app.component('Outline', Outline)
     app.component('Icon', Icon)
 
-
   }
 } satisfies Theme
