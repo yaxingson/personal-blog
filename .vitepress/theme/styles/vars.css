@@ -1,6 +1,17 @@
 :root {
+  /* vitepress builtin vars */
   --vp-c-text-1: #707070;
-  --light-color: #fff;
-  --dark-color: #000;
+  
+  /* custom vars */
+  --light-color:#fff;
+  --dark-color: #0d0f14;
+  
+  --large-text-color: #858585;
+  --medium-text-color: #707070;
+  --small-text-color: #707070;
+  
+  --border-color:#cdcdcd;
+  
+
 }
 

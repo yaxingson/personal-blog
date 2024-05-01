@@ -5,7 +5,6 @@ import Menu from '../../components/Menu.vue'
 
 const [ x, y ] = useMouse()
 
-const showTopBar = computed(()=>y.value >= 50)
 
 </script>
 

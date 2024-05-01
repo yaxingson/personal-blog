@@ -21,9 +21,6 @@ export function useEffectCanvas(el:HTMLCanvasElement|Ref<HTMLCanvasElement>) {
 
   const ctx = canvas.getContext("2d")!
 
-  ctx.globalCompositeOperation = "lighter"
-  ctx.globalCompositeOperation = 'lighter'
-
   const tree = new Tree()
 
   tree.init(ctx)

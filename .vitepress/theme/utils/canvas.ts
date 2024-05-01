@@ -93,9 +93,8 @@ export class Branch {
     if(p === null) return 
 
     ctx.beginPath()
-    ctx.globalCompositeOperation = 'lighten'
-
-    ctx.fillStyle = 'skyblue'
+  
+    ctx.fillStyle = 'rgba(0, 255, 255, 0.05)'
 
     ctx.moveTo(p.x, p.y)
     ctx.arc(p.x, p.y, r, 0, Branch.circle, true)

@@ -39,9 +39,11 @@ const grid = ()=>eventBus.emit('fmt', 'grid')
     <aside class="aside">
       <div>
         <div class="aside__avatar">
-          <div class="flex justify-center"><img src="/assets/image/avatar.jpg" alt=""></div>
-          <h2>Samuel</h2>
-      
+          <div class="flex justify-center mt-6"><img src="/assets/image/avatar.jpg" alt=""></div>
+          <h2>Soetas</h2>
+          <div>
+            <input type="search" name="" id="">
+          </div>
         </div>
       </div>
       <div class="">
@@ -61,7 +63,8 @@ const grid = ()=>eventBus.emit('fmt', 'grid')
       <header class="header">
         <nav class="flex justify-between">
           <div class="">
-            <i data-icon="calendar"></i>
+            <Icon name="left-arrow"/> &nbsp;
+            <Icon name="right-arrow"/>
           </div>
           <div>
             <ul class="flex justify-between header__navbar">
@@ -73,17 +76,14 @@ const grid = ()=>eventBus.emit('fmt', 'grid')
             </ul>
           </div>
           <div>
-            <i data-icon="search" @click="openSearchPanel"></i>
-            <i data-icon="expand" @click="openNavbarPanel"></i>
+            <Icon name="light"/>&nbsp;
+            <Icon name="expand"/>
           </div>
         </nav>
       </header>
       <main>
         <Content />
       </main>
-      <footer class="footer">
-        
-      </footer>
     </div>
   </div>
   <div class="fixed top-0 right-0 bottom-0 left-0 mask-layer" v-show="showSearchPanel" @click.self="closeSearchPanel">

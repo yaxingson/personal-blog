@@ -1,12 +1,14 @@
 <script setup lang="ts">
+import { onUpdated, ref } from 'vue'
 import { useData } from 'vitepress'
-import GrowTree from '@/components/GrowTree.vue'
 
-const { theme } = useData()
+const { theme, isDark } = useData()
 
 function changeTheme() {
   const isLight = window.getComputedStyle(document.body).backgroundColor === 'rgb(255, 255, 255)'
-  document.body.style.backgroundColor = isLight ? '#242424':'#fff'
+  document.body.style.backgroundColor = isLight ? '#0d0f14':'#fff'
+  document.documentElement.style.setProperty('--border-color', !isLight ? '#cdcdcd' : '#2c2c2c')
+  
 }
 
 </script>
@@ -25,34 +27,35 @@ function changeTheme() {
       </div>
     </nav>
   </header>
-  <main class="pt-10">
+  <main class="pt-14">
     <div class="fixed top-0 bottom-0 left-0 right-0 -z-10">
-      <GrowTree />
+      
     </div>
     <div class="home__container">
       <div class="home__intro__first">
         <p>Hi, welcome to my blog. I am a front-end developer and a fanatical open sourceror.</p>
       </div>
-      <div>
-        <span class="social-link"><Icon name="github" /> GitHub</span>
-        <span class="social-link"><Icon name="twitter" :size="23" /> Twitter</span>
-        <span class="social-link"><Icon name="youtube" /> Youtube </span>
-        <span class="social-link"><Icon name="bilibili" /> 哔哩哔哩</span>
-        <span class="social-link"><Icon name="juejin" /> 稀土掘金</span>
-      </div>
       <div class="home__intro__second">
-        <div></div>
         <p>
           My expertise includes html, css, js and vue. Eager to make progress together with like-minded partners.
           Outside of programming, I like to read books and watch movies. Of course, I also listen to music.
           Listening to music relaxes me physically and mentally.
         </p>
       </div>
+      <div class="flex justify-center items-center">
+        <span class="social-link"><Icon name="github" /> GitHub</span>
+        <span class="social-link"><Icon name="twitter" :size="23" /> Twitter</span>
+        <span class="social-link"><Icon name="youtube" /> Youtube </span>
+        <span class="social-link"><Icon name="bilibili" /> 哔哩哔哩</span>
+        <span class="social-link"><Icon name="juejin" /> 稀土掘金</span>
+      </div>
     </div>
   </main>
 </template>
 
 <style scoped lang="scss">
+
+
 header {
   line-height: 1.5;
   padding: 32px;
@@ -60,7 +63,7 @@ header {
   .sign {
     width: 135px;
     height: 30px;
-    background-image: url(/assets/image/sign-light.png);
+    background-image: url(/assets/image/sign-dark.png);
     background-size: cover;
   }
 
@@ -129,33 +132,30 @@ input[type=search] {
 
 .home__container {
   position: relative;
-  max-width: 1024px;
+  max-width: 980px;
   margin: auto;
   height: 300px;
 }
 
 .home__intro__first {
-  font-size: 35px;
-  width: 70%;
-  text-align: justify;
+  font-size: 40px;
+  text-align: center;
   margin-bottom: 30px;
+  color: var(--large-text-color)
 }
 
 .home__intro__second {
-  font-size: 22px;
-  margin-top: 50px;
-  display: flex;
-  justify-content: space-between;
-  text-align: justify; 
+  font-size: 18px;
+  margin: 50px 0 80px;
+  text-align: center; 
   
-  > p { width: 60%;}
 }
 
 .social-link {
   display: inline-block;
-  padding: 5px 40px;
-  border: 1px solid #cdcdcd;
-  border-radius: 3px;
+  padding: 5px 30px;
+  border: 1px solid var(--border-color);
+  border-radius: 100px;
   margin-right: 12px;
   cursor: pointer;
 }
