@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import Pager from '../../components/Pager.vue'
-import { eventBus } from '../../utils'
+import { eventBus, randint } from '../../utils'
 
 const showSearchPanel = ref(false)
 const keyword = ref('')
@@ -31,6 +31,7 @@ const list = ()=>{
 
 const grid = ()=>eventBus.emit('fmt', 'grid')
 
+console.log(randint(0, 200))
 
 </script>
 
@@ -39,23 +40,77 @@ const grid = ()=>eventBus.emit('fmt', 'grid')
     <aside class="aside">
       <div>
         <div class="aside__avatar">
-          <div class="flex justify-center mt-6"><img src="/assets/image/avatar.jpg" alt=""></div>
+          <div class="flex justify-center"><img src="/assets/image/avatar.jpg" alt=""></div>
           <h2>Soetas</h2>
-          <div>
-            <input type="search" name="" id="">
+          <div class="btn-ground">
+            <button>最新</button>
+            <button>热门</button>
+            <button>推荐</button>
+            <button>分享</button>
+            <button>留言</button>
           </div>
         </div>
       </div>
       <div class="">
-        <div class="flex items-center"><Icon name="category"/><span>分类</span></div>
-        <div>
-
+        <div class="flex items-center mb-3"><Icon name="category"/><span>分类</span></div>
+        <div class="category">
+          <ul>
+            <li>
+              前端技术
+              <ul class="hidden">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+              </ul>
+            </li>
+            <li>
+              开源
+              <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </li>
+            <li>
+              产品原型和设计
+              <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </li>
+            <li>
+              电影说
+              <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </li>
+            <li>
+              杂谈和感想
+              <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
       <div>
-        <div class="flex items-center"><Icon name="tag"/><span>标签</span></div>
-        <div>
-
+        <div class="flex items-center mb-3"><Icon name="tag"/><span>标签</span></div>
+        <div class="relative" style="line-height: 3;">
+          <a href="" class="inline-block mx-3" :style="{fontSize:`${randint(14, 22)}px`, transform:`rotate(${randint(-30, 30)}deg)`}">笔记</a>
+          <a href="" class="inline-block mx-3" :style="{fontSize:`${randint(14, 22)}px`, transform:`rotate(${randint(-30, 30)}deg)`}">日常分享</a>
+          <a href="" class="inline-block mx-3" :style="{fontSize:`${randint(14, 22)}px`, transform:`rotate(${randint(-30, 30)}deg)`}">Github</a>
+          <a href="" class="inline-block mx-3" :style="{fontSize:`${randint(14, 22)}px`, transform:`rotate(${randint(-30, 30)}deg)`}">功能测试</a>
+          <a href="" class="inline-block mx-3" :style="{fontSize:`${randint(14, 22)}px`, transform:`rotate(${randint(-30, 30)}deg)`}">HTTP网络</a>
+          <a href="" class="inline-block mx-3" :style="{fontSize:`${randint(14, 22)}px`, transform:`rotate(${randint(-30, 30)}deg)`}">浏览器原理</a>
+          <a href="" class="inline-block mx-3" :style="{fontSize:`${randint(14, 22)}px`, transform:`rotate(${randint(-30, 30)}deg)`}">电影</a>
+          <a href="" class="inline-block mx-3" :style="{fontSize:`${randint(14, 22)}px`, transform:`rotate(${randint(-30, 30)}deg)`}">物质和意识</a>
+          <a href="" class="inline-block mx-3" :style="{fontSize:`${randint(14, 22)}px`, transform:`rotate(${randint(-30, 30)}deg)`}">图床</a>
+          <a href="" class="inline-block mx-3" :style="{fontSize:`${randint(14, 22)}px`, transform:`rotate(${randint(-30, 30)}deg)`}">ChatGPT</a>
         </div>
       </div>
     </aside>
@@ -76,8 +131,9 @@ const grid = ()=>eventBus.emit('fmt', 'grid')
             </ul>
           </div>
           <div>
+            <span @click="openSearchPanel"><Icon name="search" /></span>
             <Icon name="light"/>&nbsp;
-            <Icon name="expand"/>
+            <span @click="openNavbarPanel"><Icon name="expand"/></span>
           </div>
         </nav>
       </header>
@@ -113,6 +169,39 @@ const grid = ()=>eventBus.emit('fmt', 'grid')
 </template>
 
 <style scoped lang="scss">
+.category {
+  li {
+    line-height: 1.5;
+    padding: 10px 0;
+    padding-left: 12px;
+    cursor: pointer;
+    font-size: 15px;
+
+    &:hover {
+      background: var(--panel-color);
+    }
+
+    ul {
+      display: none;
+    }
+  }
+}
+
+.btn-ground {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  
+  > button {
+    padding: 5px 12px;
+    border: 1px solid var(--border-color);
+    background: var(--panel-color);
+    border-radius: 5px;
+    font-size: 15px;
+
+  }
+}
+
 .footer {
   min-height: 300px;
   border-top: 1px solid #dbdbdb;
@@ -122,20 +211,21 @@ const grid = ()=>eventBus.emit('fmt', 'grid')
 .container {
   padding: 30px 50px;
   min-width: 100vw;
-  min-height: 100vh;
+  max-height: 100vh;
+
 }
 
 .aside {
-  width:380px;
-  margin-right: 50px;
+  width:350px;
+  margin-right: 80px;
+  border-right:1px solid var(--border-color);
 
   > div {
-    padding: 8px 12px;
-    margin-bottom: 25px;
-    border: 1px solid rgb(196 196 196 / 30%);
-
-    &:not(:first-child) {
-      min-height: 500px;
+    padding: 18px 12px;
+    border-bottom: 1px solid var(--border-color);
+   
+    &:last-child {
+      border-bottom: none;
     }
   }
 
@@ -153,7 +243,7 @@ const grid = ()=>eventBus.emit('fmt', 'grid')
   }
 
   h2 {
-    font-size: 20px;
+    font-size: 25px;
     margin: 30px 0;
   }
 }

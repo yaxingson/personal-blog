@@ -1,14 +1,30 @@
 <script setup lang="ts">
-import { onUpdated, ref } from 'vue'
+import { onMounted, onUpdated, ref } from 'vue'
 import { useData } from 'vitepress'
 
 const { theme, isDark } = useData()
 
+const mode = ref<'light'|'dark'>('light')
+
+onMounted(()=>{
+  const isLight = window.getComputedStyle(document.body).backgroundColor === 'rgb(255, 255, 255)'
+  mode.value = isLight ? 'light':'dark'
+})
+
 function changeTheme() {
   const isLight = window.getComputedStyle(document.body).backgroundColor === 'rgb(255, 255, 255)'
-  document.body.style.backgroundColor = isLight ? '#0d0f14':'#fff'
-  document.documentElement.style.setProperty('--border-color', !isLight ? '#cdcdcd' : '#2c2c2c')
   
+  const root = document.documentElement
+
+  mode.value = isLight ? 'dark' : 'light'
+
+  document.body.style.backgroundColor = isLight ? '#0d0f14':'#fff'
+  document.body.style.color = isLight ? '#9c9c9c' : '#707070'
+  root.style.setProperty('--border-color', !isLight ? '#ececec' : '#2c2c2c')
+  root.style.setProperty('--panel-color', isLight ? '#23262d':'#f6f6f7')
+  
+  
+
 }
 
 </script>
@@ -16,7 +32,7 @@ function changeTheme() {
 <template>
   <header>
     <nav class="flex justify-between items-center">
-      <h2 class="sign"></h2>
+      <h2 class="sign" :style="{backgroundImage:`url(/assets/image/sign-${mode}.png)`}"></h2>
       <div>
         <a v-for="(nav, i) in theme.nav" :key="i" :href="nav.link">{{ nav.text }}</a>
         <a v-for="(socialLink, i) in theme.socialLinks" :key="i" 
@@ -63,7 +79,6 @@ header {
   .sign {
     width: 135px;
     height: 30px;
-    background-image: url(/assets/image/sign-dark.png);
     background-size: cover;
   }
 

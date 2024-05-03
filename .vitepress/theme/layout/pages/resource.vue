@@ -72,8 +72,8 @@ import Menu from '../../components/Menu.vue'
 
   .resource__container > div {
     min-height: 150px;
-    background: #fff;
-    border: 1px solid rgb(196 196 196 / 30%);
+    background: var(--panel-color);
+    border: 1px solid var(--border-color);
     border-radius: 3px;
     
     cursor: pointer;

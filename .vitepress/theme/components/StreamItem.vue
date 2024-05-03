@@ -33,9 +33,6 @@ const { title, views, poster, publish, duration } = toRefs(props)
 
   >div:first-child {
     cursor: pointer;
-    &:hover~div {
-      visibility: visible;
-    }
   }
 
   >div:last-child {
@@ -45,7 +42,6 @@ const { title, views, poster, publish, duration } = toRefs(props)
     right: 0;
     bottom: 30px;
     color: #fff;
-    visibility: hidden;
     background-color:rgba(0, 0, 0, .3);
   }
 

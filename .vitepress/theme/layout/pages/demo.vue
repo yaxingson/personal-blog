@@ -26,6 +26,10 @@ const [ x, y ] = useMouse()
 </template>
 
 <style scoped lang="scss">
+main {
+  background-image: url(/assets/image/bg-grid.png);
+}
+
 .main__container {
   padding-top: 70px;
   width: 80%;
@@ -33,7 +37,7 @@ const [ x, y ] = useMouse()
 
   > div {
     height: 500px;
-    background: #eee;
+    background: var(--panel-color);
     cursor: pointer;
   }
 }

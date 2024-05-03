@@ -38,7 +38,10 @@ onMounted(() => {
 
 <template>
   <div class="outline-wrapper">
-    <div :class="{grid:category === 'column' || category === 'stream'}" class="grid-cols-1 gap-2">
+    <div :class="['gap-2', {
+      grid:category === 'column' || category === 'stream', 
+      'grid-cols-1':category==='stream', 
+      'grid-cols-3':category==='column'}]">
       <template v-if="category === 'post'">
         <PostItem v-for="post in props.posts" v-bind="post" :format="format"/>
       </template>
@@ -60,24 +63,24 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .outline-wrapper {
-  width: 980px;
+  width: 920px;
   margin: 0 auto 50px;
   padding: 0 30px;
-  height: 800px;
+  max-height: 800px;
   overflow:auto;
 
   &::-webkit-scrollbar {
-      width: 8px;
-    }
+    width: 5px;
+  }
 
-    &::-webkit-scrollbar-thumb {
-      background: #c4c4c4;
-      border-radius: 5px;
-    }
+  &::-webkit-scrollbar-thumb {
+    background: #c4c4c4;
+    border-radius: 5px;
+  }
 
-    &::-webkit-scrollbar-track {
-      display: none;
-    }
+  &::-webkit-scrollbar-track {
+    display: none;
+  }
 
 }
 

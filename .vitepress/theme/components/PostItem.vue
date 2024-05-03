@@ -36,8 +36,8 @@ const link = computed(()=>{
         <p>{{ description }}</p>
       </div>
       <div class="flex justify-between icon-ground">
-        <div><Icon name="calendar" size="26"/><span>{{ date }}</span></div>
-        <div><Icon name="comment" size="23"/><span>{{ comments }}</span></div>
+        <div><Icon name="calendar"/><span>{{ date }}</span></div>
+        <div><Icon name="comment"/><span>{{ comments }}</span></div>
         <div><Icon name="clock"/><span>{{ readTime }}</span></div>
       </div>
     </div>
@@ -49,12 +49,17 @@ const link = computed(()=>{
 .post-list-item {
   display: flex;
   min-height: 180px;
-  padding: 12px;
-  margin: 12px 0;
+  padding: 18px;
+  margin: 30px 0;
   cursor: pointer;
-  width: 100%;
-  border:1px solid #d6d6d680;
-  
+  background: var(--panel-color);
+  border-radius: 8px;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
 
   > div:first-child {
     flex:1;
@@ -77,25 +82,5 @@ const link = computed(()=>{
   
 }
 
-.post-grid-item {
-  width: 45%;
-  box-shadow: 1px 1px 3px 3px #eee;
-  margin: 12px;
-  position: relative;
-  cursor: pointer;
-
-  h2 {
-    font-size: 22px;
-  }
-
-  > div:last-child {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100px;
-    background: #fff;
-  }
-}
 
 </style>
