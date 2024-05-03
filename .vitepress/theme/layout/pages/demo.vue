@@ -28,6 +28,7 @@ const [ x, y ] = useMouse()
 <style scoped lang="scss">
 main {
   background-image: url(/assets/image/bg-grid.png);
+  background-attachment: fixed;
 }
 
 .main__container {
@@ -39,6 +40,11 @@ main {
     height: 500px;
     background: var(--panel-color);
     cursor: pointer;
+    transition: all 0.05s;
+
+    &:hover {
+      transform: translate(-3px, -3px);
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import Pager from '../../components/Pager.vue'
 import { eventBus, randint } from '../../utils'
+import Menu from '../../components/Menu.vue';
 
 const showSearchPanel = ref(false)
 const keyword = ref('')
@@ -35,7 +35,7 @@ console.log(randint(0, 200))
 
 </script>
 
-<template>
+<!-- <template>
   <div class="flex justify-between container">
     <aside class="aside">
       <div>
@@ -101,16 +101,16 @@ console.log(randint(0, 200))
       <div>
         <div class="flex items-center mb-3"><Icon name="tag"/><span>标签</span></div>
         <div class="relative" style="line-height: 3;">
-          <a href="" class="inline-block mx-3" :style="{fontSize:`${randint(14, 22)}px`, transform:`rotate(${randint(-30, 30)}deg)`}">笔记</a>
-          <a href="" class="inline-block mx-3" :style="{fontSize:`${randint(14, 22)}px`, transform:`rotate(${randint(-30, 30)}deg)`}">日常分享</a>
-          <a href="" class="inline-block mx-3" :style="{fontSize:`${randint(14, 22)}px`, transform:`rotate(${randint(-30, 30)}deg)`}">Github</a>
-          <a href="" class="inline-block mx-3" :style="{fontSize:`${randint(14, 22)}px`, transform:`rotate(${randint(-30, 30)}deg)`}">功能测试</a>
-          <a href="" class="inline-block mx-3" :style="{fontSize:`${randint(14, 22)}px`, transform:`rotate(${randint(-30, 30)}deg)`}">HTTP网络</a>
-          <a href="" class="inline-block mx-3" :style="{fontSize:`${randint(14, 22)}px`, transform:`rotate(${randint(-30, 30)}deg)`}">浏览器原理</a>
-          <a href="" class="inline-block mx-3" :style="{fontSize:`${randint(14, 22)}px`, transform:`rotate(${randint(-30, 30)}deg)`}">电影</a>
-          <a href="" class="inline-block mx-3" :style="{fontSize:`${randint(14, 22)}px`, transform:`rotate(${randint(-30, 30)}deg)`}">物质和意识</a>
-          <a href="" class="inline-block mx-3" :style="{fontSize:`${randint(14, 22)}px`, transform:`rotate(${randint(-30, 30)}deg)`}">图床</a>
-          <a href="" class="inline-block mx-3" :style="{fontSize:`${randint(14, 22)}px`, transform:`rotate(${randint(-30, 30)}deg)`}">ChatGPT</a>
+          <a href="" class="inline-block mx-2" :style="{fontSize:`${randint(12, 20)}px`}">笔记</a>
+          <a href="" class="inline-block mx-2" :style="{fontSize:`${randint(12, 20)}px`}">日常分享</a>
+          <a href="" class="inline-block mx-2" :style="{fontSize:`${randint(12, 20)}px`}">Github</a>
+          <a href="" class="inline-block mx-2" :style="{fontSize:`${randint(12, 20)}px`}">功能测试</a>
+          <a href="" class="inline-block mx-2" :style="{fontSize:`${randint(12, 20)}px`}">HTTP网络</a>
+          <a href="" class="inline-block mx-2" :style="{fontSize:`${randint(12, 20)}px`}">浏览器原理</a>
+          <a href="" class="inline-block mx-2" :style="{fontSize:`${randint(12, 20)}px`}">电影</a>
+          <a href="" class="inline-block mx-2" :style="{fontSize:`${randint(12, 20)}px`}">物质和意识</a>
+          <a href="" class="inline-block mx-2" :style="{fontSize:`${randint(12, 20)}px`}">图床</a>
+          <a href="" class="inline-block mx-2" :style="{fontSize:`${randint(12, 20)}px`}">ChatGPT</a>
         </div>
       </div>
     </aside>
@@ -166,9 +166,19 @@ console.log(randint(0, 200))
       </div>
     </div>
   </div>
+</template> -->
+
+<template>
+  <Menu />
+  <Content />
 </template>
 
+
 <style scoped lang="scss">
+::v-deep(.outline-wrapper:last-child) {
+  background: var(--panel-color);
+}
+
 .category {
   li {
     line-height: 1.5;

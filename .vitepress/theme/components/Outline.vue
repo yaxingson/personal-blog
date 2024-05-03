@@ -38,7 +38,9 @@ onMounted(() => {
 
 <template>
   <div class="outline-wrapper">
-    <div :class="['gap-2', {
+    <div class="relative">
+      <div class="absolute"></div>
+      <!-- <div :class="['gap-2', {
       grid:category === 'column' || category === 'stream', 
       'grid-cols-1':category==='stream', 
       'grid-cols-3':category==='column'}]">
@@ -57,18 +59,35 @@ onMounted(() => {
       <template v-else>
         <NoticeItem v-for="notice in props.notices" v-bind="notice" :format="format"/>
       </template>
+    </div> -->
+
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .outline-wrapper {
-  width: 920px;
-  margin: 0 auto 50px;
-  padding: 0 30px;
-  max-height: 800px;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
   overflow:auto;
 
+  > div {
+    height: 100vh;
+    width: 70vw;
+    background: #343841;
+
+    > div:first-child {
+      right: -20%;
+      top:50%;
+      transform: translateY(-50%);
+      width: 400px;
+      height:550px;
+      background-image: url(/assets/photo/IMG20240406151402.jpg);
+      background-size:cover;
+    }
+  }
+ 
   &::-webkit-scrollbar {
     width: 5px;
   }

@@ -7,4 +7,4 @@ import { data } from './posts.data'
 
 </script>
 
-<Outline v-for="item in [data[0]]" v-bind="item" category="post"/>
+<Outline v-for="item in data" v-bind="item" category="post"/>

@@ -10,34 +10,91 @@ import Menu from '../../components/Menu.vue'
       <section class="main__container__section">
         <h2>工具</h2>
         <div class="grid grid-cols-3 resource__container">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+          <div class="relative">
+            <div class="absolute"><img src="/assets/image/tinypng.webp" alt=""></div>
+            <p></p>
+            <p></p>
+          </div>
+          <div class="relative">
+            <div class="absolute"><img src="/assets/image/color-space-logo.png" alt=""></div>
+            <p></p>
+            <p></p>
+          </div>
+          <div class="relative">
+            <div class="absolute"><img src="/assets/image/iconfont.svg" alt=""></div>
+            <p></p>
+            <p></p>
+          </div>
+          <div class="relative">
+            <div class="absolute"><img src="/assets/image/wordart.webp" alt=""></div>
+            <p></p>
+            <p></p>
+          </div>
+          <div class="relative">
+            <div class="absolute"><img src="/assets/image/shields.png" alt=""></div>
+            <p></p>
+            <p></p>
+          </div>
+          <div class="relative">
+            <div class="absolute"><img src="/assets/image/stackblitz.svg" alt=""></div>
+            <p></p>
+            <p></p>
+          </div>
         </div>
       </section>
       <section class="main__container__section">
         <h2>文档</h2>
         <div class="grid grid-cols-3 resource__container">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+          <div class="relative">
+            <div class="absolute"><img src="/assets/image/vue.svg" alt=""></div>
+            <p></p>
+            <p></p>
+          </div>
+          <div class="relative">
+            <div class="absolute"><img src="/assets/image/react.svg" alt=""></div>
+            <p></p>
+            <p></p>
+          </div>
+          <div class="relative">
+            <div class="absolute"><img src="/assets/image/pinia.svg" alt=""></div>
+            <p></p>
+            <p></p>
+          </div>
+          <div class="relative">
+            <div class="absolute"><img src="/assets/image/babel.svg" alt=""></div>
+            <p></p>
+            <p></p>
+          </div>
+          <div class="relative">
+            <div class="absolute"><img src="/assets/image/eslint.svg" alt=""></div>
+            <p></p>
+            <p></p>
+          </div>
+          <div class="relative">
+            <div class="absolute"><img src="/assets/image/prettier.png" alt=""></div>
+            <p></p>
+            <p></p>
+          </div>
         </div>
       </section>
       <section class="main__container__section">
         <h2>友链</h2>
         <div class="grid grid-cols-3 resource__container">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+          <div class="relative">
+            <div class="absolute"><img src="/assets/image/evan.jpg" alt=""></div>
+            <p></p>
+            <p></p>
+          </div>
+          <div class="relative">
+            <div class="absolute"><img src="/assets/image/antfu.png" alt=""></div>
+            <p></p>
+            <p></p>
+          </div>
+          <div class="relative">
+            <div class="absolute"><img src="/assets/image/zhizi.jpg" alt=""></div>
+            <p></p>
+            <p></p>
+          </div>
         </div>
       </section>
     </div>
@@ -55,20 +112,43 @@ import Menu from '../../components/Menu.vue'
 }
 
 .main__container {
-  width: 70%;
+  width: 60%;
   margin: auto;
   padding-top: 60px;
+
+  div.absolute {
+    left:50%;
+    top: -50px;
+    transform: translateX(-50%);
+    width:80px;
+    height: 80px;
+    background: var(--panel-color);
+    display: grid;
+    place-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+  }
+
 }
 
 .main__container__section {
-  margin-bottom: 30px;
+  padding-bottom: 30px;
 
   h2 {
     font-size: 25px;
-    margin-bottom: 30px;
+    margin-bottom: 80px;
   }
 
-  .resource__container { grid-gap: 30px;}
+  .resource__container { 
+    grid-gap: 80px 30px;
+  }
 
   .resource__container > div {
     min-height: 150px;
