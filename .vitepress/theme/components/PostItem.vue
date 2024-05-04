@@ -38,6 +38,8 @@ const link = computed(()=>{
 p {
   padding: 12px 0;
   font-size: 18px;
+  display: inline-block;
+  cursor: pointer;
 }
 
 

@@ -4,19 +4,45 @@
 </script>
 
 <template>
-  <main class="m-auto flex justify-center">
-    <div class="my-20 p-5 container min-h-screen">
-      <Content />
+  <main class="relative">
+    <div>
+      <div>
+        xxx
+      </div>
     </div>
   </main>
 </template>
 
 <style langs="scss" scoped>
-.container {
-  width: 800px;
-  box-shadow: 1px 1px 3px 3px #eee;
-  border-radius: 5px;
+main {
+  overflow: hidden;
+}
+
+main > div {
+  width: 920px;
+  margin: 120px auto;
   background: #fff;
+  overflow:auto;
+  max-height: 80vh;
+
+  > div {
+    min-height: 800px;
+  }
+}
+
+
+main::before {
+  content:"";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 33.33vh;
+  background-image: url(/assets/photo/IMG20240406145852.jpg);
+  background-size: cover;
+  background-position: 0;
+  z-index: -999;
+
 }
 
 

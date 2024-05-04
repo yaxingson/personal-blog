@@ -1,7 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { eventBus, randint } from '../../utils'
 import Menu from '../../components/Menu.vue';
+
+const bgColor = ref('')
+
+onMounted(()=>{
+  const isLight = window.getComputedStyle(document.body).backgroundColor === 'rgb(255, 255, 255)'
+  bgColor.value = !isLight ? '#0d0f14':'#fff'
+})
 
 const showSearchPanel = ref(false)
 const keyword = ref('')
@@ -138,15 +145,6 @@ console.log(randint(0, 200))
       <input type="search" placeholder="搜索站内您感兴趣的内容" v-model="keyword">
     </div>
   </div>
-
-  <div class="fixed top-0 right-0 bottom-0 left-0 overlay z-10" v-show="showNavbarPanel">
-      <div class="social-links flex justify-around items-center">
-        <span><i data-icon="github"></i></span>
-        <span><i data-icon="twitter"></i></span>
-        <span><i data-icon="juejin"></i></span>
-      </div>
-    </div>
-  </div>
 </template> -->
 
 <template>
@@ -157,7 +155,7 @@ console.log(randint(0, 200))
 
 <style scoped lang="scss">
 ::v-deep(.outline-wrapper:last-child) {
-  background: rgb(13, 15, 20);
+  background: v-bind(bgColor);
 }
 
 .category {

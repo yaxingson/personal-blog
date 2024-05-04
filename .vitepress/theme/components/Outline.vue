@@ -37,13 +37,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="outline-wrapper">  
+  <div class="outline-wrapper">
     <div>
-      <div>
-        Blog post
+      <div class="flex justify-between">
+        <div class="flex items-baseline"><h2>Post</h2><h3>for 2024.</h3></div>
+        <div></div>
       </div>
       <div>
-        01
+        <div>
+          
+        </div>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam deserunt unde eveniet.</p>
       </div>
       <div class="grid grid-cols-2">
         <template v-if="category === 'post'">
@@ -62,9 +66,8 @@ onMounted(() => {
           <NoticeItem v-for="notice in props.notices" v-bind="notice" :format="format"/>
         </template>
       </div>
-      <div class="flex">
-        <div>prev</div>
-        <div>next</div>
+      <div>
+        CC BY-NC-SA 4.0 2021-PRESENT © Soetas
       </div>
     </div>
   </div>
@@ -75,28 +78,42 @@ onMounted(() => {
   width: 100vw;
   height: 100vh;
   position: fixed;
-  padding: 12vh 10vw;
+  padding: 12vh 3vw 12vh 15vw;
 
   > div {
     height: 100%;
-   
-    > div:nth-child(2) {
-      margin: 50px 0 120px;
-      padding: 12px 0;
-      width: 300px;
-      border-bottom: 1px solid #353535;
 
-    }
+    > div:first-child {
+      h2 {
+        font-size: 38px;
+      }
 
-    > div:last-child {
-      margin-top: 150px;
-
-      > div {
-        padding: 8px 70px;
-        border: 1px solid var(--border-color);
-        margin-right: 50px;
+      h3 {
+        font-size: 25px;
+        margin-left: 30px;
       }
     }
+
+   
+    > div:nth-of-type(2) {
+      margin: 50px 0 80px;
+      
+      input {
+        font-size: 18px;
+        width: 500px;
+        padding: 8px 0;
+        margin-bottom: 30px;
+        border-bottom: 1px solid var(--border-color);
+      }
+    
+    }
+
+    > div:last-of-type {
+      margin-top: 120px;
+
+    }
+
+   
   }
 
   // &::-webkit-scrollbar {
