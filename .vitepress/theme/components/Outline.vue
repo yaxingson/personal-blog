@@ -37,30 +37,35 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="outline-wrapper">
-    <div class="relative">
-      <div class="absolute"></div>
-      <!-- <div :class="['gap-2', {
-      grid:category === 'column' || category === 'stream', 
-      'grid-cols-1':category==='stream', 
-      'grid-cols-3':category==='column'}]">
-      <template v-if="category === 'post'">
-        <PostItem v-for="post in props.posts" v-bind="post" :format="format"/>
-      </template>
-      <template v-else-if="category === 'note'">
-        <NoteItem v-for="note in props.notes" v-bind="note" :format="format"/>
-      </template>
-      <template v-else-if="category === 'column'">
-        <ColumnItem v-for="column in props.columns" v-bind="column" :format="format"/>
-      </template>
-      <template v-else-if="category === 'stream'">
-        <StreamItem v-for="stream in props.streams" v-bind="stream" :format="format"/>
-      </template>
-      <template v-else>
-        <NoticeItem v-for="notice in props.notices" v-bind="notice" :format="format"/>
-      </template>
-    </div> -->
-
+  <div class="outline-wrapper">  
+    <div>
+      <div>
+        Blog post
+      </div>
+      <div>
+        01
+      </div>
+      <div class="grid grid-cols-2">
+        <template v-if="category === 'post'">
+          <PostItem v-for="post in props.posts" v-bind="post" :format="format"/>
+        </template>
+        <template v-else-if="category === 'note'">
+          <NoteItem v-for="note in props.notes" v-bind="note" :format="format"/>
+        </template>
+        <template v-else-if="category === 'column'">
+          <ColumnItem v-for="column in props.columns" v-bind="column" :format="format"/>
+        </template>
+        <template v-else-if="category === 'stream'">
+          <StreamItem v-for="stream in props.streams" v-bind="stream" :format="format"/>
+        </template>
+        <template v-else>
+          <NoticeItem v-for="notice in props.notices" v-bind="notice" :format="format"/>
+        </template>
+      </div>
+      <div class="flex">
+        <div>prev</div>
+        <div>next</div>
+      </div>
     </div>
   </div>
 </template>
@@ -70,37 +75,42 @@ onMounted(() => {
   width: 100vw;
   height: 100vh;
   position: fixed;
-  overflow:auto;
+  padding: 12vh 10vw;
 
   > div {
-    height: 100vh;
-    width: 70vw;
-    background: #343841;
+    height: 100%;
+   
+    > div:nth-child(2) {
+      margin: 50px 0 120px;
+      padding: 12px 0;
+      width: 300px;
+      border-bottom: 1px solid #353535;
 
-    > div:first-child {
-      right: -20%;
-      top:50%;
-      transform: translateY(-50%);
-      width: 400px;
-      height:550px;
-      background-image: url(/assets/photo/IMG20240406151402.jpg);
-      background-size:cover;
+    }
+
+    > div:last-child {
+      margin-top: 150px;
+
+      > div {
+        padding: 8px 70px;
+        border: 1px solid var(--border-color);
+        margin-right: 50px;
+      }
     }
   }
- 
-  &::-webkit-scrollbar {
-    width: 5px;
-  }
 
-  &::-webkit-scrollbar-thumb {
-    background: #c4c4c4;
-    border-radius: 5px;
-  }
+  // &::-webkit-scrollbar {
+  //     width: 5px;
+  //   }
 
-  &::-webkit-scrollbar-track {
-    display: none;
-  }
+  //   &::-webkit-scrollbar-thumb {
+  //     background: #c4c4c4;
+  //     border-radius: 5px;
+  //   }
 
+  //   &::-webkit-scrollbar-track {
+  //     display: none;
+  //   }
 }
 
 ::v-deep(.post-list-item:first-child) {

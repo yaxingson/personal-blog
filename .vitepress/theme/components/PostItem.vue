@@ -30,56 +30,14 @@ const link = computed(()=>{
 
 <template>
   <div class="post-list-item" v-show="format === 'list'" @click="router.go(link)">
-    <div class="flex flex-col justify-between">
-      <div>
-        <h2>{{ title }}</h2>
-        <p>{{ description }}</p>
-      </div>
-      <div class="flex justify-between icon-ground">
-        <div><Icon name="calendar"/><span>{{ date }}</span></div>
-        <div><Icon name="comment"/><span>{{ comments }}</span></div>
-        <div><Icon name="clock"/><span>{{ readTime }}</span></div>
-      </div>
-    </div>
-    <div><img :src="poster" alt=""></div>
+    <p>{{  title  }}</p>
   </div>
 </template>
 
 <style scoped lang="scss">
-.post-list-item {
-  display: flex;
-  min-height: 180px;
-  padding: 18px;
-  margin: 30px 0;
-  cursor: pointer;
-  background: var(--panel-color);
-  border-radius: 8px;
-  transition: all 0.2s;
-
-  &:hover {
-    transform: scale(1.02);
-  }
-
-
-  > div:first-child {
-    flex:1;
-
-    h2 {
-      font-size: 22px;
-    }
-
-    .icon-ground {
-      width: 300px;
-
-    }
-
-  }
-
-  > div:last-child {
-    width: 155px;
-
-  }
-  
+p {
+  padding: 12px 0;
+  font-size: 18px;
 }
 
 

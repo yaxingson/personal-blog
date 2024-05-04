@@ -122,15 +122,6 @@ console.log(randint(0, 200))
             <Icon name="right-arrow"/>
           </div>
           <div>
-            <ul class="flex justify-between header__navbar">
-              <li><a href="/blog/posts/">Posts</a></li>
-              <li><a href="/blog/notes/">Notes</a></li>
-              <li><a href="/blog/columns/">Columns</a></li>
-              <li><a href="/blog/streams/">Streams</a></li>
-              <li><a href="/blog/notice/">Archivist</a></li>
-            </ul>
-          </div>
-          <div>
             <span @click="openSearchPanel"><Icon name="search" /></span>
             <Icon name="light"/>&nbsp;
             <span @click="openNavbarPanel"><Icon name="expand"/></span>
@@ -147,18 +138,8 @@ console.log(randint(0, 200))
       <input type="search" placeholder="搜索站内您感兴趣的内容" v-model="keyword">
     </div>
   </div>
+
   <div class="fixed top-0 right-0 bottom-0 left-0 overlay z-10" v-show="showNavbarPanel">
-    <div class="relative">
-      <div class="close-btn-wrapper"><i data-icon="close" @click="closeNavbarPanel"></i></div>
-      <div>
-        <ul class="navbar flex flex-col justify-between">
-          <li><a href="/">Home</a></li>
-          <li><a href="/blog/posts">Blog</a></li>
-          <li><a href="/projects/">Projects</a></li>
-          <li><a href="/demos/">Demos</a></li>
-          <li><a href="/resource/">Resource</a></li>
-        </ul>
-      </div>
       <div class="social-links flex justify-around items-center">
         <span><i data-icon="github"></i></span>
         <span><i data-icon="twitter"></i></span>
@@ -176,7 +157,7 @@ console.log(randint(0, 200))
 
 <style scoped lang="scss">
 ::v-deep(.outline-wrapper:last-child) {
-  background: var(--panel-color);
+  background: rgb(13, 15, 20);
 }
 
 .category {

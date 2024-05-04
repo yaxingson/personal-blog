@@ -32,23 +32,33 @@ const hideMenu = ()=>show.value = false
       </div>
       <div>
         <div class="flex submenu__items" v-show="panel ==='home'">
-          <div></div>
+          <div><a href="/">home</a></div>
         </div>
         <div class="flex submenu__items" v-show="panel ==='blog'">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+          <div>
+            <a href="/blog/posts/">post</a>
+          </div>
+          <div>
+            <a href="/blog/notes/">note</a>
+          </div>
+          <div>
+            <a href="/blog/columns/">column</a>
+          </div>
+          <div>
+            <a href="/blog/streams/">stream</a>
+          </div>
+          <div>
+            <a href="/blog/notice/">archivist</a>
+          </div>
         </div>
         <div class="flex submenu__items" v-show="panel ==='project'">
-          <div></div>
+          <div><a href="/projects/">project</a></div>
         </div>
         <div class="flex submenu__items" v-show="panel ==='demo'">
-          <div></div>
+          <div><a href="/demos/">demo</a></div>
         </div>
         <div class="flex submenu__items" v-show="panel ==='resource'">
-          <div></div>
+          <div><a href="/resource/">resource</a></div>
           <div></div>
           <div></div>
         </div>
@@ -132,15 +142,23 @@ const hideMenu = ()=>show.value = false
     flex: 1;
     background: #fff;
     cursor: pointer;
+    overflow: hidden;
+    transform-origin: 0;
 
     &:not(:last-child) {
       margin-right: 30px;
     }
 
     &:hover {
-      transform-origin: 0;
       transform: rotateY(5deg);
     }
+
+    > a {
+      display: block;
+      height: 100%;
+      padding: 5px;
+    }
+
   }
 
 }
