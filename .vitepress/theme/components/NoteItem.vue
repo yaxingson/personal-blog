@@ -13,43 +13,17 @@ const props = withDefaults(defineProps<NoteItemProps>(), {format:'list'})
 </script>
 
 <template>
-  <div class="note-list-item flex justify-between" @click="router.go('/blog/notes/202403191612')">
-    <div class="flex items-center">
-      <div class="square"></div>
-      <h2>{{ props.title }}</h2>
-    </div>
-    <div>2020-02-10</div>
+  <div class="note-list-item" @click="router.go('/blog/notes/202403191612')">
+    <p>{{ props.title }}</p>
   </div>
 </template>
 
 <style scoped lang="scss">
-.note-list-item {
-  height: 80px;
-  width: 100%;
+p {
+  padding: 12px 0;
   font-size: 18px;
+  display: inline-block;
   cursor: pointer;
-  padding: 8px;
-  align-items: center;
-
-  .square {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #e5e5e5;
-    margin-right: 12px;
-  }
 }
-
-.note-grid-item {
-  width: 45%;
-  height: 300px;
-  box-shadow: 1px 1px 3px 3px #eee;
-  margin: 8px;
-  padding: 8px;
-
-  h2 { font-size: 25px; }
-
-
-}
-
 
 </style>

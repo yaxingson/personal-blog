@@ -29,8 +29,8 @@ const link = computed(()=>{
 </script>
 
 <template>
-  <div class="post-list-item" v-show="format === 'list'" @click="router.go(link)">
-    <p>{{  title  }}</p>
+  <div class="post-list-item" v-show="format === 'list'">
+    <p @click="router.go(link)">{{  title  }}</p>
   </div>
 </template>
 
